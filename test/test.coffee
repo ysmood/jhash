@@ -36,4 +36,4 @@ batch = (hash_fun, name) ->
 		collisions: #{ratio}%
 	"""
 
-batch ys_hash.hash_buffer, 'hash_arr'
+batch ys_hash.hash_buffer, 'hash_buffer'
