@@ -1,7 +1,10 @@
 do ->
+	# The prime number nearest to 2 ** 23.
+	init_sum = 8388617
+
 	ys_hash =
 		hash_buffer: (buf) ->
-			h = 2 ** 23 + 335
+			h = init_sum
 			for i in buf
 				# One bit cycling the hash value.
 				# Use the mask to keep the hash value positive.
@@ -9,9 +12,11 @@ do ->
 			h.toString(36)
 
 		hash_str: (str) ->
-			h = 2 ** 23 + 335
-			for i in [0 ... str.length]
-				h = ( (h << 1 | h >>> 30) & 0x7fffffff ) ^ str.charCodeAt(i)
+			h = init_sum
+			i = 0
+			len = str.length
+			while i < len
+				h = ( (h << 1 | h >>> 30) & 0x7fffffff ) ^ str.charCodeAt(i++)
 			h.toString(36)
 
 	if typeof module == 'undefined'
