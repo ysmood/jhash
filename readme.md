@@ -10,7 +10,7 @@ Useful when using in the url and middle scale table lookup.
 
 #### Node
 
-* install
+* Install
 
  ```shell
  npm install ys-hash
