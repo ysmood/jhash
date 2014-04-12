@@ -13,7 +13,7 @@ test = (hash_fun) ->
 	hash_fun(arr)
 
 batch = (hash_fun, name) ->
-	len = 10000
+	len = 100000
 	time = _.now()
 	res = {}
 	samples = []
@@ -30,10 +30,10 @@ batch = (hash_fun, name) ->
 	time = (_.now() - time) / 1000
 
 	console.log """
-		 task count: #{len}
-		     sample: #{sample}
-		       time: #{time}s
-		 collisions: #{ratio}%
+		task count: #{len}
+		10 samples: #{sample}
+		      time: #{time}s
+		collisions: #{ratio}%
 	"""
 
 batch ys_hash.hash_buffer, 'hash_arr'

@@ -42,14 +42,14 @@ Download the js file from the release page: [Release][1].
 
 ### Random Test
 
-    task count: 10000
-    10 samples: ["ezsb1p","qb4990","roc6b8","ayxqrb","2a9u7v","xiizm1","1dpjti","n57f2y","6lcshz","g883np","41431w"]
-          time: 1.319s
-    collisions: 0%
+    task count: 100000
+    10 samples: ["uaubqw","nwgv7q","jk4rju","nee3bc","z6ww6","5p6ww0","jv5r7x","fatzxh","k93vla","7yqigp","ty52pg"]
+          time: 13.33s
+    collisions: 0.004999999999999449%
 
 ## Road Map
 
-* Add some test cases.
+* Add more test cases.
 
 * Implement into other languages.
 
