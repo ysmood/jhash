@@ -28,6 +28,8 @@ Useful when using in the url and middle scale table lookup.
 
 #### Browser
 
+Download the js file from the release page: [Release][1].
+
 ```html
 <script src='ys_hash.js'></script>
 <script>
@@ -44,3 +46,6 @@ Useful when using in the url and middle scale table lookup.
 ## The MIT License (MIT)
 
 Apr 2014 ys
+
+
+  [1]: https://github.com/ysmood/ys-hash/releases
