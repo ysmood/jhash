@@ -28,11 +28,11 @@ Useful when using it in the **URL** or **table lookup**.
  var fs = require('fs');
  ys.hash_arr(fs.readFileSync('a.jpg'));
 
- // Control the char set.
+ // Control the hash char set.
  ys.set_symbols('abcdef');
  ys.hash_str('test'); // output => 'cbbfcedcffe'
 
- // Control the max length of the result hash value.
+ // Control the max length of the result hash value. Unit is bit.
  ys.set_mask_len(10);
  ys.hash_str('test'); // output => 'cdec'
  ```
