@@ -8,7 +8,7 @@ test = (hash_fun) ->
 	for i in [0 ... _.random(1, 10000)]
 		# It's hard to collision, so I decreaed the random byte value
 		# from `2 ** 8` to `2 ** 3`
-		arr.push _.random(0, 2 ** 3)
+		arr.push _.random(0, 2 ** 8)
 
 	hash_fun(arr)
 
@@ -33,7 +33,7 @@ batch = (hash_fun, name) ->
 		task count: #{len}
 		10 samples: #{sample}
 		      time: #{time}s
-		collisions: #{ratio}%
+		collisions: #{ratio}% #{len - _.size(res)}
 	"""
 
 batch ys_hash.hash_arr, 'hash_buffer'

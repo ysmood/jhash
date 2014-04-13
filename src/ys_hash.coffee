@@ -1,14 +1,10 @@
 do ->
 	class Ys_hash
 		constructor: ->
-			# The prime number nearest to 2 ** 23.
-			@init_sum = 8388617
-
 			# RFC 3986 URI chars without some unsafe chars "$&+,/:;=?@#~[]".
 			@set_symbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
 
-			# The default length is 31 which will prevent negative number.
-			@set_mask_len 31
+			@set_mask_len 32
 
 		set_symbols: (str) =>
 			###
@@ -22,6 +18,12 @@ do ->
 				If you want shorter hash, this is the api.
 			###
 
+			len = 32 if len > 32
+
+			@init_sum = 2 ** ((len - len % 2) / 2)
+
+			@roll_len = len - 1
+
 			@mask = 0xffffffff >>> (32 - len)
 
 		hash_arr: (arr) =>
@@ -33,7 +35,7 @@ do ->
 			for i in arr
 				# One bit cycling the hash value.
 				# Use the mask to keep the hash value positive.
-				h = ( (h << 1 | h >>> 30) & @mask) ^ i
+				h = ( (h << 1 | h >>> @roll_len) & @mask) ^ i
 			@to_str(h)
 
 		hash_str: (str) =>
@@ -41,25 +43,27 @@ do ->
 			i = 0
 			len = str.length
 			while i < len
-				h = ( (h << 1 | h >>> 30) & @mask ) ^ str.charCodeAt(i++)
+				h = ( (h << 1 | h >>> @roll_len) & @mask ) ^ str.charCodeAt(i++)
 			@to_str(h)
 
 		to_str: (num) ->
 			str = ''
-			sign = ''
 			base = @symbols.length
 
 			# We need to keep the number positive.
-			if num < 0
-				sign = '-'
-				num *= -1
+			# This way won't decrease the info.
+			if @roll_len == 31
+				if num < 0
+					num = -2 * num - 1
+				else
+					num = 2 * num
 
 			while num >= base
 				s = num % base
 				str = @symbols[s] + str
 				num = (num - s) / base
 
-			str = sign + @symbols[num] + str
+			str = @symbols[num] + str
 
 			return str
 

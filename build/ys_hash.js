@@ -9,9 +9,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       this.hash_arr = __bind(this.hash_arr, this);
       this.set_mask_len = __bind(this.set_mask_len, this);
       this.set_symbols = __bind(this.set_symbols, this);
-      this.init_sum = 8388617;
       this.set_symbols("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*");
-      this.set_mask_len(31);
+      this.set_mask_len(32);
     }
 
     Ys_hash.prototype.set_symbols = function(str) {
@@ -27,6 +26,11 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       /*
       				If you want shorter hash, this is the api.
        */
+      if (len > 32) {
+        len = 32;
+      }
+      this.init_sum = Math.pow(2, (len - len % 2) / 2);
+      this.roll_len = len - 1;
       return this.mask = 0xffffffff >>> (32 - len);
     };
 
@@ -39,7 +43,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       h = this.init_sum;
       for (_i = 0, _len = arr.length; _i < _len; _i++) {
         i = arr[_i];
-        h = ((h << 1 | h >>> 30) & this.mask) ^ i;
+        h = ((h << 1 | h >>> this.roll_len) & this.mask) ^ i;
       }
       return this.to_str(h);
     };
@@ -50,26 +54,28 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       i = 0;
       len = str.length;
       while (i < len) {
-        h = ((h << 1 | h >>> 30) & this.mask) ^ str.charCodeAt(i++);
+        h = ((h << 1 | h >>> this.roll_len) & this.mask) ^ str.charCodeAt(i++);
       }
       return this.to_str(h);
     };
 
     Ys_hash.prototype.to_str = function(num) {
-      var base, s, sign, str;
+      var base, s, str;
       str = '';
-      sign = '';
       base = this.symbols.length;
-      if (num < 0) {
-        sign = '-';
-        num *= -1;
+      if (this.roll_len === 31) {
+        if (num < 0) {
+          num = -2 * num - 1;
+        } else {
+          num = 2 * num;
+        }
       }
       while (num >= base) {
         s = num % base;
         str = this.symbols[s] + str;
         num = (num - s) / base;
       }
-      str = sign + this.symbols[num] + str;
+      str = this.symbols[num] + str;
       return str;
     };
 
