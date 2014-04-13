@@ -5,10 +5,6 @@ Not likes md5 or sha1, the hash sum it creates is only about 6 chars.
 
 Useful when using it in the **URL** or **table lookup**.
 
-## Implementations
-
-### coffee
-
 #### Node
 
 * Install
@@ -17,7 +13,7 @@ Useful when using it in the **URL** or **table lookup**.
  npm install ys-hash
  ```
 
-* Use in code
+* Usage
 
  ```javascript
  var ys = require('ys-hash');
