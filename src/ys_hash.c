@@ -4,7 +4,7 @@ unsigned ys_hash (void *key, int len) {
 	unsigned char *p = key;
 	unsigned h = 8388617;
 
-	for (int i = 0; i < len; ++i)
+	for (int i = 0; i < len; i++)
 	{
 		h = ( (h << 1 | h >> 30) & 0x7fffffff ) ^ p[i];
 	}
