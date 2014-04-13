@@ -25,7 +25,9 @@ Useful when using it in the **URL** or **table lookup**.
 
 #### Browser
 
-Download the js file from the release page: [Release][1].
+Install it via [Bower][2]: `bower install ys-hash`.
+
+Or download the js file from the release page: [Release][1].
 
 ```html
 <script src='ys_hash.js'></script>
@@ -84,3 +86,4 @@ Apr 2014 ys
 
 
   [1]: https://github.com/ysmood/ys-hash/releases
+  [2]: https://github.com/bower/bower

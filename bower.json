@@ -1,0 +1,24 @@
+{
+  "name": "ys-hash",
+  "version": "0.0.2",
+  "homepage": "https://github.com/ysmood/ys-hash",
+  "authors": [
+    "http://ysmood.org"
+  ],
+  "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
+  "main": "build/ys_hash.js",
+  "keywords": [
+    "hash",
+    "short",
+    "url",
+    "fast"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src"
+  ]
+}
