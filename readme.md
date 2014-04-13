@@ -38,7 +38,7 @@ Or download the js file from the release page: [Release][1].
 
 ## Test
 
-### Random Test
+This is just a random test, you may need to test some real data before using it project.
 
 #### Compare to some other hash algorithms
 
