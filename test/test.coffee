@@ -13,7 +13,7 @@ test = (hash_fun) ->
 	hash_fun(arr)
 
 batch = (hash_fun, name) ->
-	len = 100000
+	len = 10000
 	time = _.now()
 	res = {}
 	samples = []
@@ -36,4 +36,4 @@ batch = (hash_fun, name) ->
 		collisions: #{ratio}%
 	"""
 
-batch ys_hash.hash_buffer, 'hash_buffer'
+batch ys_hash.hash_arr, 'hash_buffer'
