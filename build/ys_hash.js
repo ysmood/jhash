@@ -3,11 +3,11 @@
   var init_sum, ys_hash;
   init_sum = 8388617;
   ys_hash = {
-    hash_buffer: function(buf) {
+    hash_arr: function(arr) {
       var h, i, _i, _len;
       h = init_sum;
-      for (_i = 0, _len = buf.length; _i < _len; _i++) {
-        i = buf[_i];
+      for (_i = 0, _len = arr.length; _i < _len; _i++) {
+        i = arr[_i];
         h = ((h << 1 | h >>> 30) & 0x7fffffff) ^ i;
       }
       return h.toString(36);

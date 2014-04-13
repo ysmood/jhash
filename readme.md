@@ -20,7 +20,7 @@ Useful when using it in the **URL** or **table lookup**.
  ys.hash_str('test'); // output => '27wvh2'
  
  var fs = require('fs');
- ys.hash_buffer(fs.readFileSync('a.jpg'));
+ ys.hash_arr(fs.readFileSync('a.jpg'));
  ```
 
 #### Browser

@@ -3,9 +3,9 @@ do ->
 	init_sum = 8388617
 
 	ys_hash =
-		hash_buffer: (buf) ->
+		hash_arr: (arr) ->
 			h = init_sum
-			for i in buf
+			for i in arr
 				# One bit cycling the hash value.
 				# Use the mask to keep the hash value positive.
 				h = ( (h << 1 | h >>> 30) & 0x7fffffff ) ^ i
