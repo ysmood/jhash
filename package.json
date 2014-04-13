@@ -1,6 +1,6 @@
 {
   "name": "ys-hash",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
   "main": "build/ys_hash.js",
   "directories": {

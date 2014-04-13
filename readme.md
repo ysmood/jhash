@@ -1,9 +1,15 @@
-## YS Hash
+## Overview
 
 A fast algorithm to hash string or binary file inspired by the JSW hash.
-Not likes md5 or sha1, the hash sum it creates is only about 6 chars.
+Not likes md5 or sha1, the hash sum it creates is only about 5 chars (if you use base 70).
 
 Useful when using it in the **URL** or **table lookup**.
+
+## Features
+
+* Easy to control the length of the result hash value.
+
+* Lite and fast.
 
 #### Node
 
@@ -17,10 +23,18 @@ Useful when using it in the **URL** or **table lookup**.
 
  ```javascript
  var ys = require('ys-hash');
- ys.hash_str('test'); // output => '27wvh2'
- 
+ ys.hash_str('test'); // output => '5Flye'
+
  var fs = require('fs');
  ys.hash_arr(fs.readFileSync('a.jpg'));
+
+ // Control the char set.
+ ys.set_symbols('abcdef');
+ ys.hash_str('test'); // output => 'cbbfcedcffe'
+
+ // Control the max length of the result hash value.
+ ys.set_mask_len(10);
+ ys.hash_str('test'); // output => 'cdec'
  ```
 
 #### Browser
