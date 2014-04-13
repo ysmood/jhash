@@ -11,7 +11,7 @@ Useful when using it in the **URL** or **table lookup**.
 
 * Lite and fast.
 
-#### Node
+### Node
 
 * Install
 
@@ -37,7 +37,7 @@ Useful when using it in the **URL** or **table lookup**.
  ys.hash_str('test'); // output => 'cdec'
  ```
 
-#### Browser
+### Browser
 
 Install it via [Bower][2]: `bower install ys-hash`.
 
