@@ -23,18 +23,18 @@ Useful when using it in the **URL** or **table lookup**.
 
  ```javascript
  var ys = require('ys-hash');
- ys.hash_str('test'); // output => '5Flye'
+ ys.hash_str('test'); // output => '68iM'
 
  var fs = require('fs');
  ys.hash_arr(fs.readFileSync('a.jpg'));
 
  // Control the hash char set.
  ys.set_symbols('abcdef');
- ys.hash_str('test'); // output => 'cbbfcedcffe'
+ ys.hash_str('test'); // output => 'bbcffbbfc'
 
  // Control the max length of the result hash value. Unit is bit.
  ys.set_mask_len(10);
- ys.hash_str('test'); // output => 'cdec'
+ ys.hash_str('test'); // output => 'ede'
  ```
 
 ### Browser
@@ -46,7 +46,7 @@ Or download the js file from the release page: [Release][1].
 ```html
 <script src='ys_hash.js'></script>
 <script>
-  ys_hash.hash_str('test'); // output => '5Flye'
+  ys_hash.hash_str('test'); // output => '68iM'
 </script>
 ```
 
