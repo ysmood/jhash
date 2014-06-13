@@ -26,9 +26,20 @@ do ->
 
 			@mask = 0xffffffff >>> (32 - len)
 
-		hash_arr: (arr) =>
+		hash: (data) ->
+			###
+				Auto check the data type and choose the corresponding method.
+			###
+
+			if typeof data == 'string'
+				@hash_str data
+			else if Buffer.isBuffer(data) or Arrary.isArray(data)
+				@hash_arr data
+
+		hash_arr: (arr) ->
 			###
 				Also can hash a file buffer.
+				return a string.
 			###
 
 			h = @init_sum
@@ -38,7 +49,7 @@ do ->
 				h = ( (h << 1 | h >>> @roll_len) & @mask) ^ i
 			@to_str(h)
 
-		hash_str: (str) =>
+		hash_str: (str) ->
 			h = @init_sum
 			i = 0
 			len = str.length

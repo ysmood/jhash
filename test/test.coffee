@@ -10,7 +10,7 @@ test = (hash_fun) ->
 		# from `2 ** 8` to `2 ** 3`
 		arr.push _.random(0, 2 ** 8)
 
-	hash_fun(arr)
+	hash_fun.call ys_hash, arr
 
 batch = (hash_fun, name) ->
 	len = 10000
