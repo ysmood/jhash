@@ -1,23 +1,21 @@
 <?
 
-function ys_hash($arr) {
+function ys_hash($str) {
+	$arr = str_split($str);
+
 	$h = array_reduce(
 		$arr,
 		function($sum, $n) {
-			return ( ($sum << 1 | $sum >> 30) & 0x7fffffff ) ^ $n;
+			return ( ($sum << 1 | $sum >> 31) & 0xffffffff ) ^ ord($n);
 		},
-		8388617
+		65536
 	);
 
 	return base_convert($h, 10, 36);
 }
 
-// Test
-$arr = array();
-for ($i = 0; $i < 5000; $i++) {
-	$arr[$i] = rand(0, 255);
-}
+$data = file_get_contents('test/rand_file.bin');
 
-echo ys_hash($arr) . "\n";
+echo ys_hash($data);
 
 ?>
