@@ -46,7 +46,7 @@ Or download the js file from the release page: [Release][1].
 ```html
 <script src='ys_hash.js'></script>
 <script>
-  ys_hash.hash('test'); // output => '68iM'
+  ys_hash.hash('test'); // output => '349o'
 </script>
 ```
 
