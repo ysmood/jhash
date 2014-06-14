@@ -26,48 +26,50 @@ do ->
 
 			@mask = 0xffffffff >>> (32 - len)
 
-		hash: (data) ->
+		hash: (data, is_number = false) ->
 			###
 				Auto check the data type and choose the corresponding method.
 			###
 
 			if typeof data == 'string'
-				@hash_str data
+				h = @hash_str data
 			else if Buffer.isBuffer(data) or Arrary.isArray(data)
-				@hash_arr data
+				h = @hash_arr data
+
+			# Use 'n >>> 0' to prevent the negative number.
+			if h < 0
+				h = h >>> 0
+
+			if is_number
+				h
+			else
+				@to_str h
 
 		hash_arr: (arr) ->
 			###
 				Also can hash a file buffer.
-				return a string.
 			###
 
 			h = @init_sum
 			for i in arr
-				# One bit cycling the hash value.
-				# Use the mask to keep the hash value positive.
-				h = ( (h << 1 | h >>> @roll_len) & @mask) ^ i
-			@to_str(h)
+				h = @sum h, i
+			h
 
 		hash_str: (str) ->
 			h = @init_sum
 			i = 0
 			len = str.length
 			while i < len
-				h = ( (h << 1 | h >>> @roll_len) & @mask ) ^ str.charCodeAt(i++)
-			@to_str(h)
+				h = @sum h, str.charCodeAt(i++)
+			h
+
+		sum: (h, v) ->
+			# One bit cycling the hash value.
+			( (h << 1 | h >>> @roll_len) & @mask ) ^ v
 
 		to_str: (num) ->
 			str = ''
 			base = @symbols.length
-
-			# We need to keep the number positive.
-			# This way won't decrease the info.
-			if @roll_len == 31
-				if num < 0
-					num = -2 * num - 1
-				else
-					num = 2 * num
 
 			while num >= base
 				s = num % base
