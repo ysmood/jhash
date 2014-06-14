@@ -6,7 +6,7 @@ def baseN(num,b,numerals="0123456789abcdefghijklmnopqrstuvwxyz"):
 def ys_hash(arr):
 	h = reduce(
 		lambda sum, n:
-			((sum << 1 | sum >> 30) & 0x7fffffff) ^ n,
+			((sum << 1 | sum >> 31) & 0xffffffff) ^ n,
 		arr,
 		8388617
 	)

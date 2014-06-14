@@ -25,9 +25,9 @@ function ys_hash(arr)
 			bit32.band(
 				bit32.bor(
 					bit32.lshift(h, 1),
-					bit32.rshift(h, 30)
+					bit32.rshift(h, 31)
 				),
-				0x7fffffff
+				0xffffffff
 			),
 			v
 		)

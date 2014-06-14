@@ -1,7 +1,7 @@
 
 def ys_hash arr
 	arr.reduce(8388617) { |sum, n|
-		((sum << 1 | sum >> 30) & 0x7fffffff) ^ n
+		((sum << 1 | sum >> 31) & 0xffffffff) ^ n
 	}.to_s(36)
 end
 
