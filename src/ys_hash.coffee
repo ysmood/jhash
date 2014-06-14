@@ -32,7 +32,7 @@ class Ys_hash
 
 		if typeof data == 'string'
 			h = @hash_str data
-		else if Buffer.isBuffer(data) or Arrary.isArray(data)
+		else if Buffer.isBuffer(data) or Array.isArray(data)
 			h = @hash_arr data
 
 		# Use 'n >>> 0' to prevent the negative number.
