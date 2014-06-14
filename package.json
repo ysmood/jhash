@@ -2,13 +2,16 @@
   "name": "ys-hash",
   "version": "0.0.6",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
-  "main": "build/ys_hash.js",
+  "main": "dist/ys_hash.js",
+  "bin": {
+    "ys-hash": "bin/ys-hash.js"
+  },
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "node_modules/.bin/coffee test/test.coffee",
-    "prepublish": "node_modules/.bin/coffee -o build -c src/ys_hash.coffee"
+    "prepublish": "cake build"
   },
   "repository": {
     "type": "git",
@@ -28,7 +31,10 @@
   "homepage": "https://github.com/ysmood/ys-hash",
   "devDependencies": {
     "coffee-script": "~1.7.1",
-    "fs-extra": "^0.9.1",
+    "fs-extra": "~0.9.1",
     "underscore": "~1.6.0"
+  },
+  "dependencies": {
+    "commander": "~2.2.0"
   }
 }

@@ -6,7 +6,7 @@
     "http://ysmood.org"
   ],
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
-  "main": "build/ys_hash.js",
+  "main": "dist/ys_hash.js",
   "keywords": [
     "hash",
     "short",
@@ -20,6 +20,8 @@
     "bower_components",
     "test",
     "rand_files",
-    "src"
+    "src",
+    "bin",
+    "Cakefile"
   ]
 }
