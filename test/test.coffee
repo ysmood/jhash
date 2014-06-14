@@ -2,6 +2,7 @@
 
 _ = require 'underscore'
 ys_hash = require '../src/ys_hash'
+fs = require 'fs-extra'
 
 test = (hash_fun) ->
 	arr = []
@@ -37,3 +38,8 @@ batch = (hash_fun, name) ->
 	"""
 
 batch ys_hash.hash_arr, 'hash_buffer'
+
+
+# Sample hash file hash sum.
+buf = fs.readFileSync 'test/rand_file.bin'
+console.log '>> Sample file: ' + ys_hash.hash(buf) # >> 1gom8fv
