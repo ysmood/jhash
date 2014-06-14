@@ -1,86 +1,84 @@
-do ->
-	class Ys_hash
-		constructor: ->
-			# RFC 3986 URI chars without some unsafe chars "$&+,/:;=?@#~[]".
-			@set_symbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
+class Ys_hash
+	constructor: ->
+		# RFC 3986 URI chars without some unsafe chars "$&+,/:;=?@#~[]".
+		@set_symbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
 
-			@set_mask_len 32
+		@set_mask_len 32
 
-		set_symbols: (str) =>
-			###
-				Control the char set.
-			###
+	set_symbols: (str) =>
+		###
+			Control the char set.
+		###
 
-			@symbols = str.split('')
+		@symbols = str.split('')
 
-		set_mask_len: (len) =>
-			###
-				If you want shorter hash, this is the api.
-			###
+	set_mask_len: (len) =>
+		###
+			If you want shorter hash, this is the api.
+		###
 
-			len = 32 if len > 32
+		len = 32 if len > 32
 
-			@init_sum = 2 ** ((len - len % 2) / 2)
+		@init_sum = 2 ** ((len - len % 2) / 2)
 
-			@roll_len = len - 1
+		@roll_len = len - 1
 
-			@mask = 0xffffffff >>> (32 - len)
+		@mask = 0xffffffff >>> (32 - len)
 
-		hash: (data, is_number = false) ->
-			###
-				Auto check the data type and choose the corresponding method.
-			###
+	hash: (data, is_number = false) ->
+		###
+			Auto check the data type and choose the corresponding method.
+		###
 
-			if typeof data == 'string'
-				h = @hash_str data
-			else if Buffer.isBuffer(data) or Arrary.isArray(data)
-				h = @hash_arr data
+		if typeof data == 'string'
+			h = @hash_str data
+		else if Buffer.isBuffer(data) or Arrary.isArray(data)
+			h = @hash_arr data
 
-			# Use 'n >>> 0' to prevent the negative number.
-			if h < 0
-				h = h >>> 0
+		# Use 'n >>> 0' to prevent the negative number.
+		h = h >>> 0
 
-			if is_number
-				h
-			else
-				@to_str h
-
-		hash_arr: (arr) ->
-			###
-				Also can hash a file buffer.
-			###
-
-			h = @init_sum
-			for i in arr
-				h = @sum h, i
+		if is_number
 			h
+		else
+			@to_str h
 
-		hash_str: (str) ->
-			h = @init_sum
-			i = 0
-			len = str.length
-			while i < len
-				h = @sum h, str.charCodeAt(i++)
-			h
+	hash_arr: (arr) ->
+		###
+			Also can hash a file buffer.
+		###
 
-		sum: (h, v) ->
-			# One bit cycling the hash value.
-			( (h << 1 | h >>> @roll_len) & @mask ) ^ v
+		h = @init_sum
+		for i in arr
+			h = @sum h, i
+		h
 
-		to_str: (num) ->
-			str = ''
-			base = @symbols.length
+	hash_str: (str) ->
+		h = @init_sum
+		i = 0
+		len = str.length
+		while i < len
+			h = @sum h, str.charCodeAt(i++)
+		h
 
-			while num >= base
-				s = num % base
-				str = @symbols[s] + str
-				num = (num - s) / base
+	sum: (h, v) ->
+		# One bit cycling the hash value.
+		( (h << 1 | h >>> @roll_len) & @mask ) ^ v
 
-			str = @symbols[num] + str
+	to_str: (num) ->
+		str = ''
+		base = @symbols.length
 
-			return str
+		while num >= base
+			s = num % base
+			str = @symbols[s] + str
+			num = (num - s) / base
 
-	if typeof module == 'undefined'
-		window.ys_hash = new Ys_hash
-	else
-		module.exports = new Ys_hash
+		str = @symbols[num] + str
+
+		return str
+
+if typeof module == 'undefined'
+	window.ys_hash = new Ys_hash
+else
+	module.exports = new Ys_hash
