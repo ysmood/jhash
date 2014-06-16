@@ -11,6 +11,22 @@ Useful when using it in the **URL** or **table lookup**.
 
 * Lite and fast.
 
+
+## Other Language Implementations
+
+I have implemented the core algorithm into 7 commonly used languages:
+
+* c
+* coffeescript
+* go
+* lua
+* php
+* python
+* ruby
+
+Only the coffeescript one has full API.
+
+
 ### Node
 
 * Install
@@ -55,7 +71,7 @@ Or download the js file from the release page: [Release][1].
 
 * Install
 
-  To use it as a commadn line tool, install it globally.
+  To use it as a command line tool, install it globally.
 
       npm install -g ys-hash
 
@@ -63,7 +79,7 @@ Or download the js file from the release page: [Release][1].
 
   Here are some examples.
 
-  Print help infomation:
+  Print help information:
 
         ys-hash -h
 
@@ -127,7 +143,6 @@ This is just a random test, you may need to test some real data before using it 
 
 * Add more test cases.
 
-* Implement into other languages.
 
 ## The MIT License (MIT)
 
