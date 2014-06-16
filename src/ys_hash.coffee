@@ -78,8 +78,12 @@ class Ys_hash
 
 		return str
 
-if typeof module == 'undefined'
-	window.ys_hash = new Ys_hash
-else
+# AMD Support
+if typeof module == "object" and module and typeof module.exports == "object"
 	global.Ys_hash = Ys_hash
 	module.exports = new Ys_hash
+else
+	if typeof define == "function" and define.amd
+		define 'ys_hash', [], -> new Ys_hash
+	else
+		window.ys_hash = new Ys_hash
