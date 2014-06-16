@@ -88,7 +88,6 @@ batch = (hash_fun, name) ->
 		samples.push v
 		res[v] = true
 
-	ratio = (1 - _.size(res) / len) * 100
 	sample = JSON.stringify(
 		samples[0..10].map (el) ->
 			el.toString(36)
@@ -100,7 +99,7 @@ batch = (hash_fun, name) ->
 		****** #{name} *******
 		     sample: #{sample}
 		       time: #{time}s
-		 collisions: #{ratio}%
+		 collisions: #{_.size(res)} / #{len}
 	"""
 
 for k, v of hash_funs
