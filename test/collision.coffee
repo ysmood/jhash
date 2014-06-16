@@ -14,28 +14,31 @@ test = (hash_fun) ->
 	hash_fun.call ys_hash, arr
 
 batch = (hash_fun, name) ->
-	len = 50000
-	time = _.now()
+	start_time = Date.now()
+	count = 0
 	res = {}
 	samples = []
-	for i in [0 ... len]
+	while true
 		v = test(hash_fun)
 		samples.push v
 		res[v] = true
 
-	ratio = (1 - _.size(res) / len) * 100
+		# Run about 10 seconds.
+		if ++count % 100 == 0 and
+		Date.now() - start_time >= 1000 * 10
+			break
+
 	sample = JSON.stringify(
-		samples[0..10].map (el) ->
+		samples[0...10].map (el) ->
 			el.toString(36)
 	)
-	time = (_.now() - time) / 1000
+	time = (Date.now() - start_time) / 1000
+	ratio = (1 - _.size(res) / count) * 100
 
 	console.log """
-		task count: #{len}
-		10 samples: #{sample}
-		      time: #{time}s
-		collisions: #{ratio}% #{len - _.size(res)}
+		first 10 results: #{sample}
+		            time: #{time}s
+		      collisions: #{ratio}% (#{count - _.size(res)}/#{count})
 	"""
 
-ys_hash.set_mask_len 20
 batch ys_hash.hash, 'hash_buffer'
