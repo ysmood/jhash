@@ -51,11 +51,45 @@ Or download the js file from the release page: [Release][1].
 ```
 
 
+### CLI Tool
+
+* Install
+
+  To use it as a commadn line tool, install it globally.
+
+      npm install -g ys-hash
+
+* Usage
+
+  Here are some examples.
+
+  Print help infomation:
+
+        ys-hash -h
+
+  Hash string `abc`, it outputs `2csX`:
+
+        ys-hash abc
+
+  Hash a jpg image file (it will automatically detect whether the passed in argument is a file or not):
+
+        ys-hash a.jpg
+
 ## Test
 
-This is just a random test, you may need to test some real data before using it in project.
+#### Unit test
+
+You must have installed [mocha](http://visionmedia.github.io/mocha/) globally.
+
+    cake test
+
+#### Collision test for 10 seconds random data
+
+    cake collision
 
 #### Compare to some other hash algorithms
+
+This is just a random test, you may need to test some real data before using it in project.
 
 ```
 ****** ys_hash *******
