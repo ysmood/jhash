@@ -3,7 +3,10 @@
 A fast algorithm to hash string or binary file inspired by the JSW hash.
 Not likes md5 or sha1, the hash sum it creates is only about 6 chars (if you use base 70).
 
-Useful when using it in the **URL** or **table lookup**.
+I used it in one of my company's node project.
+To peacefully distribute different versions of files to the CDN service.
+
+Useful when using it in the **URL** hash or **table lookup**.
 
 ## Features
 
