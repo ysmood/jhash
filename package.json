@@ -10,7 +10,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/coffee test/test.coffee",
+    "test": "cake test",
     "prepublish": "cake build"
   },
   "repository": {

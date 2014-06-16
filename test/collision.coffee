@@ -14,7 +14,7 @@ test = (hash_fun) ->
 	hash_fun.call ys_hash, arr
 
 batch = (hash_fun, name) ->
-	len = 10000
+	len = 50000
 	time = _.now()
 	res = {}
 	samples = []
@@ -37,9 +37,5 @@ batch = (hash_fun, name) ->
 		collisions: #{ratio}% #{len - _.size(res)}
 	"""
 
-batch ys_hash.hash_arr, 'hash_buffer'
-
-
-# Sample hash file hash sum.
-buf = fs.readFileSync 'test/rand_file.bin'
-console.log '>> Sample file: ' + ys_hash.hash(buf) # >> 1gom8fv
+ys_hash.set_mask_len 20
+batch ys_hash.hash, 'hash_buffer'

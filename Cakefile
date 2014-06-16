@@ -13,6 +13,14 @@ get_right_bin = (cmd) ->
 
 coffee_bin = get_right_bin 'node_modules/.bin/coffee'
 
+task 'test', 'Test APIs', ->
+	spawn 'mocha', [
+		'--require', 'coffee-script/register'
+		'test/basic.coffee'
+	], {
+		stdio: 'inherit'
+	}
+
 task 'build', 'Build project', ->
 	spawn coffee_bin, [
 		'-o', 'dist'

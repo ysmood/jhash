@@ -81,4 +81,5 @@ class Ys_hash
 if typeof module == 'undefined'
 	window.ys_hash = new Ys_hash
 else
+	global.Ys_hash = Ys_hash
 	module.exports = new Ys_hash
