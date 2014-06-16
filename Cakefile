@@ -21,6 +21,13 @@ task 'test', 'Test APIs', ->
 		stdio: 'inherit'
 	}
 
+task 'collision', '10 seconds collision test', ->
+	spawn coffee_bin, [
+		'test/collision.coffee'
+	], {
+		stdio: 'inherit'
+	}
+
 task 'build', 'Build project', ->
 	spawn coffee_bin, [
 		'-o', 'dist'
