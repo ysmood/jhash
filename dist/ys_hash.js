@@ -100,11 +100,17 @@
 
   })();
 
-  if (typeof module === 'undefined') {
-    window.ys_hash = new Ys_hash;
-  } else {
+  if (typeof module === "object" && module && typeof module.exports === "object") {
     global.Ys_hash = Ys_hash;
     module.exports = new Ys_hash;
+  } else {
+    if (typeof define === "function" && define.amd) {
+      define('ys_hash', [], function() {
+        return new Ys_hash;
+      });
+    } else {
+      window.ys_hash = new Ys_hash;
+    }
   }
 
 }).call(this);
