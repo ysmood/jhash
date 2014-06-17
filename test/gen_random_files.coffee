@@ -14,4 +14,4 @@ _.times 5, (num) ->
 	for i in [0 ... len]
 		buf[i] = _.random(0, 2 ** 8)
 
-	fs.outputFileSync  dir_path + "/#{num}.bin", buf
+	fs.outputFileSync dir_path + "/#{num}.bin", buf
