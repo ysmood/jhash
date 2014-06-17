@@ -3,4 +3,6 @@ node_js:
   - "0.11"
   - "0.10"
   - "0.8"
-before_install: npm install -g coffee-script mocha
+before_install:
+  - "npm update -g npm"
+  - "npm install -g coffee-script mocha"
