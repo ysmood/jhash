@@ -96,6 +96,8 @@ Or download the js file from the release page: [Release][1].
 
 ## Test
 
+[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash)
+
 #### Unit test
 
 You must have installed [coffeescript](https://github.com/ysmood/jdb/blob/master/coffeescript.org) and [mocha](http://visionmedia.github.io/mocha/) globally.
