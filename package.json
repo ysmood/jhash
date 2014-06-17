@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "cake test",
+    "preinstall": "npm install -g coffee-script mocha",
     "prepublish": "cake build"
   },
   "repository": {
