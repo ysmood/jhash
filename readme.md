@@ -8,8 +8,7 @@ It helps me peacefully distribute different versions of files to the CDN service
 
 Useful when using it in the **URL** hash or **table lookup**.
 
-[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash)
-
+[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash) [![Build status](https://ci.appveyor.com/api/projects/status/tsh8f5680c5esiqr)](https://ci.appveyor.com/project/ysmood/ys-hash)
 
 ## Features
 
