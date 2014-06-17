@@ -7,7 +7,7 @@
     "ys-hash": "bin/ys-hash.js"
   },
   "scripts": {
-    "test": "echo 1",
+    "test": "cake test",
     "prepublish": "cake build"
   },
   "repository": {
