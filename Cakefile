@@ -1,5 +1,5 @@
 fs = require 'fs'
-{ spawn } = require 'child_process'
+spawn = require 'win-spawn'
 
 task 'test', 'Test APIs', ->
 	spawn 'mocha', [
