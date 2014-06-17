@@ -36,3 +36,19 @@ task 'build', 'Build project', ->
 		data = fs.readFileSync path, 'utf8'
 		data = cmd + data
 		fs.writeFileSync path, data
+
+task 'benchmark', 'Simple benchmark', ->
+	require 'coffee-script/register'
+	_ = require 'underscore'
+	ys = require './src/ys_hash'
+
+	count = 10000
+	start_time = Date.now()
+	file = fs.readFileSync('test/rand_file.bin')
+	_.times count, ->
+		ys.hash file
+
+	span = (Date.now() - start_time) / 1000
+	console.log """
+	Run for #{count} files.
+	Takes #{span}s"""
