@@ -2,7 +2,6 @@
 
 _ = require 'underscore'
 ys_hash = require '../src/ys_hash'
-fs = require 'fs-extra'
 
 test = (hash_fun) ->
 	arr = []
