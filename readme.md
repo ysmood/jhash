@@ -8,6 +8,9 @@ It helps me peacefully distribute different versions of files to the CDN service
 
 Useful when using it in the **URL** hash or **table lookup**.
 
+[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash)
+
+
 ## Features
 
 * Easy to control the length of the result hash value.
@@ -95,8 +98,6 @@ Or download the js file from the release page: [Release][1].
         ys-hash a.jpg
 
 ## Test
-
-[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash)
 
 #### Unit test
 
