@@ -1,4 +1,3 @@
-require 'coffee-script/register'
 fs = require 'fs'
 { spawn } = require 'child_process'
 

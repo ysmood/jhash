@@ -6,9 +6,6 @@
   "bin": {
     "ys-hash": "bin/ys-hash.js"
   },
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "cake test",
     "prepublish": "cake build"
@@ -30,7 +27,6 @@
   },
   "homepage": "https://github.com/ysmood/ys-hash",
   "devDependencies": {
-    "coffee-script": "~1.7.1",
     "fs-extra": "~0.9.1",
     "underscore": "~1.6.0"
   },
