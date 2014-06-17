@@ -1,17 +1,6 @@
 fs = require 'fs'
 { spawn } = require 'child_process'
 
-get_right_bin = (cmd) ->
-	if process.platform == 'win32'
-		win_cmd = cmd + '.cmd'
-		if fs.existsSync win_cmd
-			cmd = win_cmd
-		else if not fs.existsSync cmd
-			cmd = which.sync(cmd)
-	return cmd
-
-coffee_bin = get_right_bin 'node_modules/.bin/coffee'
-
 task 'test', 'Test APIs', ->
 	spawn 'mocha', [
 		'--require', 'coffee-script/register'
@@ -21,21 +10,21 @@ task 'test', 'Test APIs', ->
 	}
 
 task 'collision', '10 seconds collision test', ->
-	spawn coffee_bin, [
+	spawn 'coffee', [
 		'test/collision.coffee'
 	], {
 		stdio: 'inherit'
 	}
 
 task 'build', 'Build project', ->
-	spawn coffee_bin, [
+	spawn 'coffee', [
 		'-o', 'dist'
 		'-c', 'src/ys_hash.coffee'
 	], {
 		stdio: 'inherit'
 	}
 
-	p = spawn coffee_bin, [
+	p = spawn 'coffee', [
 		'-c', 'bin'
 	], {
 		stdio: 'inherit'
