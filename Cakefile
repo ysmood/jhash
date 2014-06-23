@@ -2,12 +2,14 @@ fs = require 'fs'
 spawn = require 'win-spawn'
 
 task 'test', 'Test APIs', ->
-	spawn 'mocha', [
+	spawn('mocha', [
 		'--require', 'coffee-script/register'
 		'test/basic.coffee'
 	], {
 		stdio: 'inherit'
-	}
+	}).on 'exit', (code) ->
+		if code != 0
+			process.exit code
 
 task 'collision', '10 seconds collision test', ->
 	spawn 'coffee', [
