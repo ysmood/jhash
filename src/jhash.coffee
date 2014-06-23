@@ -84,6 +84,6 @@ if typeof module == "object" and module and typeof module.exports == "object"
 	module.exports = new Ys_hash
 else
 	if typeof define == "function" and define.amd
-		define 'ys_hash', [], -> new Ys_hash
+		define 'jhash', [], -> new Ys_hash
 	else
-		window.ys_hash = new Ys_hash
+		window.jhash = new Ys_hash

@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-unsigned ys_hash (void *key, int len) {
+unsigned jhash (void *key, int len) {
 	unsigned char *p = key;
 	unsigned h = 8388617;
 
@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 {
 	int arr[] = { 12, 0, 23, 43, 230, 2 };
 
-	printf("%d\n", ys_hash(arr, 3));
+	printf("%d\n", jhash(arr, 3));
 
 	return 0;
 }

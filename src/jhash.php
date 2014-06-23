@@ -1,6 +1,6 @@
 <?
 
-function ys_hash($str) {
+function jhash($str) {
 	$arr = str_split($str);
 
 	$h = array_reduce(
@@ -16,6 +16,6 @@ function ys_hash($str) {
 
 $data = file_get_contents('test/rand_file.bin');
 
-echo ys_hash($data);
+echo jhash($data);
 
 ?>

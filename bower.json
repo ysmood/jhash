@@ -1,12 +1,12 @@
 {
-  "name": "ys-hash",
+  "name": "jhash",
   "version": "0.1.2",
-  "homepage": "https://github.com/ysmood/ys-hash",
+  "homepage": "https://github.com/ysmood/jhash",
   "authors": [
     "http://ysmood.org"
   ],
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
-  "main": "dist/ys_hash.js",
+  "main": "dist/jhash.js",
   "keywords": [
     "hash",
     "short",

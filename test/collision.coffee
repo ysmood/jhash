@@ -1,7 +1,7 @@
 #!node_modules/.bin/coffee
 
 _ = require 'underscore'
-ys_hash = require '../src/ys_hash'
+jhash = require '../src/jhash'
 
 test = (hash_fun) ->
 	arr = []
@@ -10,7 +10,7 @@ test = (hash_fun) ->
 		# from `2 ** 8` to `2 ** 3`
 		arr.push _.random(0, 2 ** 8)
 
-	hash_fun.call ys_hash, arr
+	hash_fun.call jhash, arr
 
 batch = (hash_fun, name) ->
 	start_time = Date.now()
@@ -40,4 +40,4 @@ batch = (hash_fun, name) ->
 		      collisions: #{ratio}% (#{count - _.size(res)}/#{count})
 	"""
 
-batch ys_hash.hash, 'hash_buffer'
+batch jhash.hash, 'hash_buffer'

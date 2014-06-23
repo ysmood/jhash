@@ -62,7 +62,7 @@ hash_funs =
 			h = (h << 1 | h >>> 31) ^ i
 		h
 
-	ys_hash: (arr) ->
+	jhash: (arr) ->
 		h = 2 ** 23 + 335
 		for i in arr
 			# Use the mask to keep the hash value positive.

@@ -18,7 +18,7 @@ function basen(n, b)
 	return sign .. table.concat(t,"")
 end
 
-function ys_hash(arr)
+function jhash(arr)
 	h = 8388617
 	for k, v in pairs(arr) do
 		h = bit32.bxor(
@@ -40,4 +40,4 @@ for i = 1, 5000 do
 	arr[i] = math.random(0, 255)
 end
 
-print(ys_hash(arr))
+print(jhash(arr))

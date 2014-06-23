@@ -9,4 +9,4 @@ for i in [0...50]
 	console.log h.toString(2)
 
 
-ys = require '../src/ys_hash'
+jhash = require '../src/jhash'

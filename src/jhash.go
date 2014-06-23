@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func ys_hash(arr []int32) string {
+func jhash(arr []int32) string {
 	var h int32 = 8388617
 	l := len(arr)
 	for i := 0; i < l; i++ {
@@ -26,5 +26,5 @@ func main() {
 		arr[i] = rand.Int31n(256)
 	}
 
-	fmt.Println(ys_hash(arr))
+	fmt.Println(jhash(arr))
 }

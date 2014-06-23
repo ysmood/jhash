@@ -1,8 +1,8 @@
-ys = require '../src/ys_hash'
+jhash = require '../src/jhash'
 fs = require 'fs'
 
-ys.set_symbols '0123456789abcdefghijklmnopqrstuvwxyz'
+jhash.set_symbols '0123456789abcdefghijklmnopqrstuvwxyz'
 
 data = fs.readFileSync('test/rand_file.bin')
 
-console.log ys.hash(data)
+console.log jhash.hash(data)

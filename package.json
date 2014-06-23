@@ -1,10 +1,10 @@
 {
-  "name": "ys-hash",
+  "name": "jhash",
   "version": "0.1.2",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
-  "main": "dist/ys_hash.js",
+  "main": "dist/jhash.js",
   "bin": {
-    "ys-hash": "bin/ys-hash.js"
+    "jhash": "bin/jhash.js"
   },
   "scripts": {
     "test": "cake test",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ysmood/ys-hash.git"
+    "url": "https://github.com/ysmood/jhash.git"
   },
   "keywords": [
     "hash",
@@ -24,9 +24,9 @@
   "author": "http://ysmood.org",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ysmood/ys-hash/issues"
+    "url": "https://github.com/ysmood/jhash/issues"
   },
-  "homepage": "https://github.com/ysmood/ys-hash",
+  "homepage": "https://github.com/ysmood/jhash",
   "devDependencies": {
     "fs-extra": "^0.9.1",
     "underscore": "^1.6.0",

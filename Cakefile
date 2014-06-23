@@ -19,7 +19,7 @@ task 'collision', '10 seconds collision test', ->
 task 'build', 'Build project', ->
 	spawn 'coffee', [
 		'-o', 'dist'
-		'-c', 'src/ys_hash.coffee'
+		'-c', 'src/jhash.coffee'
 	], {
 		stdio: 'inherit'
 	}
@@ -32,7 +32,7 @@ task 'build', 'Build project', ->
 
 	p.on 'close', ->
 		cmd = '#!/usr/bin/env node\n'
-		path = 'bin/ys-hash.js'
+		path = 'bin/jhash.js'
 		data = fs.readFileSync path, 'utf8'
 		data = cmd + data
 		fs.writeFileSync path, data
@@ -40,15 +40,23 @@ task 'build', 'Build project', ->
 task 'benchmark', 'Simple benchmark', ->
 	require 'coffee-script/register'
 	_ = require 'underscore'
-	ys = require './src/ys_hash'
+	jhash = require './src/jhash'
 
-	count = 10000
+	path = 'test/rand_file.bin'
+	buf = fs.readFileSync path
+	file_size = fs.statSync(path).size
+
+	count = 0
 	start_time = Date.now()
-	file = fs.readFileSync('test/rand_file.bin')
-	_.times count, ->
-		ys.hash file
+	span = 0
 
-	span = (Date.now() - start_time) / 1000
+	while span < 3
+		if count % 1000 == 0
+			span = (Date.now() - start_time) / 1000
+		jhash.hash buf
+		count++
+
 	console.log """
-	Run for #{count} files.
-	Takes #{span}s"""
+	Operation: #{Math.round(count / span)} ops/s.
+	Avr. file size #{file_size}B.
+	"""

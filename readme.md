@@ -8,7 +8,7 @@ It helps me peacefully distribute different versions of files to the CDN service
 
 Useful when using it in the **URL** hash or **table lookup**.
 
-[![Build Status](https://travis-ci.org/ysmood/ys-hash.svg)](https://travis-ci.org/ysmood/ys-hash) [![Build status](https://ci.appveyor.com/api/projects/status/tsh8f5680c5esiqr)](https://ci.appveyor.com/project/ysmood/ys-hash)
+[![Build Status](https://travis-ci.org/ysmood/jhash.svg)](https://travis-ci.org/ysmood/jhash) [![Build status](https://ci.appveyor.com/api/projects/status/tsh8f5680c5esiqr)](https://ci.appveyor.com/project/ysmood/jhash)
 
 ## Features
 
@@ -37,37 +37,37 @@ Only the coffeescript one has full API.
 * Install
 
  ```shell
- npm install ys-hash
+ npm install jhash
  ```
 
 * Usage
 
  ```javascript
- var ys = require('ys-hash');
- ys.hash('test'); // output => '349o'
+ var jhash = require('jhash');
+ jhash.hash('test'); // output => '349o'
 
  var fs = require('fs');
- ys.hash(fs.readFileSync('a.jpg'));
+ jhash.hash(fs.readFileSync('a.jpg'));
 
  // Control the hash char set.
- ys.set_symbols('abcdef');
- ys.hash('test'); // output => 'decfddfe'
+ jhash.set_symbols('abcdef');
+ jhash.hash('test'); // output => 'decfddfe'
 
  // Control the max length of the result hash value. Unit is bit.
- ys.set_mask_len(10);
- ys.hash('test'); // output => 'ede'
+ jhash.set_mask_len(10);
+ jhash.hash('test'); // output => 'ede'
  ```
 
 ### Browser
 
-Install it via [Bower][2]: `bower install ys-hash`.
+Install it via [Bower][2]: `bower install jhash`.
 
 Or download the js file from the release page: [Release][1].
 
 ```html
-<script src='ys_hash.js'></script>
+<script src='jhash.js'></script>
 <script>
-  ys_hash.hash('test'); // output => '349o'
+  jhash.hash('test'); // output => '349o'
 </script>
 ```
 
@@ -78,7 +78,7 @@ Or download the js file from the release page: [Release][1].
 
   To use it as a command line tool, install it globally.
 
-      npm install -g ys-hash
+      npm install -g jhash
 
 * Usage
 
@@ -86,15 +86,15 @@ Or download the js file from the release page: [Release][1].
 
   Print help information:
 
-        ys-hash -h
+        jhash -h
 
   Hash string `abc`, it outputs `2csX`:
 
-        ys-hash abc
+        jhash abc
 
   Hash a jpg image file (it will automatically detect whether the passed in argument is a file or not):
 
-        ys-hash a.jpg
+        jhash a.jpg
 
 ## Test
 
@@ -113,7 +113,7 @@ You must have installed [coffeescript](https://github.com/ysmood/jdb/blob/master
 This is just a random test, you may need to test some real data before using it in project.
 
 ```
-****** ys_hash *******
+****** jhash *******
      sample: ["jg0ayq","nz9fb0","oa9iz1","4w5egf","dt7dsv","9wkm25","duu2j2","solh6y","z6rnbl","aa8ebp","g568a2"]
        time: 6.836s
  collisions: 0.000999999999995449%
@@ -144,6 +144,17 @@ This is just a random test, you may need to test some real data before using it 
  collisions: 0.002999999999997449%
 ```
 
+
+## Benchmark
+
+Run `cake benchmark`.
+
+Intel Core i7 2.3GHz SSD
+
+    Run for 869001 files. Avr. size 6716B.
+    Takes 10.006s
+
+
 ## Road Map
 
 * Add more test cases.
@@ -151,8 +162,8 @@ This is just a random test, you may need to test some real data before using it 
 
 ## The MIT License (MIT)
 
-Apr 2014 ys
+Apr 2014 jhash
 
 
-  [1]: https://github.com/ysmood/ys-hash/releases
+  [1]: https://github.com/ysmood/jhash/releases
   [2]: https://github.com/bower/bower

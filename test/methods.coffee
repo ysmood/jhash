@@ -1,16 +1,16 @@
 assert = require 'assert'
-ys = require '../src/ys_hash'
+jhash = require '../src/jhash'
 
 hash_str = ->
-	ys.hash_str 'asd0802kjksdf023hkdfhv'
+	jhash.hash_str 'asd0802kjksdf023hkdfhv'
 
 assert.equal(hash_str(), '7L0XQ')
 
-ys.set_symbols 'abcdefg'
+jhash.set_symbols 'abcdefg'
 
 assert.equal(hash_str(), 'edgeedabcd')
 
-ys.set_mask_len 10
+jhash.set_mask_len 10
 
 assert.equal(hash_str(), 'cbf')
 

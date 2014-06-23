@@ -22,15 +22,15 @@ if data
 	if not commander.string and fs.existsSync(data) and fs.statSync(data).isFile()
 		data = fs.readFileSync data
 
-	ys = require __dirname + '/../dist/ys_hash'
+	jhash = require __dirname + '/../dist/jhash'
 
 	if not commander.full
 		if commander.symbols
-			ys.set_symbols commander.symbols
+			jhash.set_symbols commander.symbols
 		else
-			ys.set_symbols default_symbols
+			jhash.set_symbols default_symbols
 
 	if commander.mask
-		ys.set_mask_len +commander.mask
+		jhash.set_mask_len +commander.mask
 
-	console.log ys.hash(data)
+	console.log jhash.hash(data)
