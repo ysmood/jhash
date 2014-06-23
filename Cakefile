@@ -50,13 +50,13 @@ task 'benchmark', 'Simple benchmark', ->
 	start_time = Date.now()
 	span = 0
 
-	while span < 3
+	while span < 10
 		if count % 1000 == 0
 			span = (Date.now() - start_time) / 1000
 		jhash.hash buf
 		count++
 
 	console.log """
-	Operation: #{Math.round(count / span)} ops/s.
+	#{Math.round(count / span)} ops/s.
 	Avr. file size #{file_size}B.
 	"""

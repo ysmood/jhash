@@ -151,8 +151,8 @@ Run `cake benchmark`.
 
 Intel Core i7 2.3GHz SSD
 
-    Run for 869001 files. Avr. size 6716B.
-    Takes 10.006s
+    87174 ops/s.
+    Avr. file size 6716B.
 
 
 ## Road Map
