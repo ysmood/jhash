@@ -7,6 +7,7 @@ coffee_bin = 'node_modules/.bin/coffee'
 task 'test', 'Test APIs', ->
 	spawn(mocha_bin, [
 		'--require', 'coffee-script/register'
+		'-R', 'spec'
 		'test/basic.coffee'
 	], {
 		stdio: 'inherit'
