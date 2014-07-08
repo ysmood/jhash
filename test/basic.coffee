@@ -30,12 +30,10 @@ describe '# hash_arr', ->
 
 describe '# set_symbols', ->
 	it 'Should works properly', ->
-		jhash = new Ys_hash
 		jhash.set_symbols 'abc'
 		assert.equal jhash.hash('test'), 'bcccaccaccacb'
 
 describe '# set_mask_len', ->
 	it 'Should works properly', ->
-		jhash = new Ys_hash
 		jhash.set_mask_len 10
-		assert.equal jhash.hash('test'), '2q'
+		assert.equal jhash.hash('test'), 'caabb'
