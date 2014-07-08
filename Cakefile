@@ -29,19 +29,6 @@ task 'build', 'Build project', ->
 		stdio: 'inherit'
 	}
 
-	p = spawn coffee_bin, [
-		'-c', 'bin'
-	], {
-		stdio: 'inherit'
-	}
-
-	p.on 'close', ->
-		cmd = '#!/usr/bin/env node\n'
-		path = 'bin/jhash.js'
-		data = fs.readFileSync path, 'utf8'
-		data = cmd + data
-		fs.writeFileSync path, data
-
 task 'benchmark', 'Simple benchmark', ->
 	require 'coffee-script/register'
 	_ = require 'underscore'
