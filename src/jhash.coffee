@@ -1,4 +1,4 @@
-class Ys_hash
+class Jhash
 	constructor: ->
 		# RFC 3986 URI chars without some unsafe chars "$&+,/:;=?@#~[]".
 		@set_symbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
@@ -80,10 +80,10 @@ class Ys_hash
 
 # AMD Support
 if typeof module == "object" and module and typeof module.exports == "object"
-	global.Ys_hash = Ys_hash
-	module.exports = new Ys_hash
+	global.Jhash = Jhash
+	module.exports = new Jhash
 else
 	if typeof define == "function" and define.amd
-		define 'jhash', [], -> new Ys_hash
+		define 'jhash', [], -> new Jhash
 	else
-		window.jhash = new Ys_hash
+		window.jhash = new Jhash
