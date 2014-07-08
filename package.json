@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/ysmood/jhash",
   "devDependencies": {
+    "coffee-script": "^1.7.1",
     "fs-extra": "^0.9.1",
     "underscore": "^1.6.0",
     "win-spawn": "^2.0.0"
