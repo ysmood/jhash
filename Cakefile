@@ -1,8 +1,11 @@
 fs = require 'fs'
 spawn = require 'win-spawn'
 
+mocha_bin = 'node_modules/.bin/mocha'
+coffee_bin = 'node_modules/.bin/coffee'
+
 task 'test', 'Test APIs', ->
-	spawn('mocha', [
+	spawn(mocha_bin, [
 		'--require', 'coffee-script/register'
 		'test/basic.coffee'
 	], {
@@ -12,21 +15,21 @@ task 'test', 'Test APIs', ->
 			process.exit code
 
 task 'collision', '10 seconds collision test', ->
-	spawn 'coffee', [
+	spawn coffee_bin, [
 		'test/collision.coffee'
 	], {
 		stdio: 'inherit'
 	}
 
 task 'build', 'Build project', ->
-	spawn 'coffee', [
+	spawn coffee_bin, [
 		'-o', 'dist'
 		'-c', 'src/jhash.coffee'
 	], {
 		stdio: 'inherit'
 	}
 
-	p = spawn 'coffee', [
+	p = spawn coffee_bin, [
 		'-c', 'bin'
 	], {
 		stdio: 'inherit'

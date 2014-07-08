@@ -29,10 +29,11 @@
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "fs-extra": "^0.9.1",
+    "mocha": "^1.20.1",
     "underscore": "^1.6.0",
     "win-spawn": "^2.0.0"
   },
   "dependencies": {
-    "commander": "^2.2.0"
+    "commander": "~2.2.0"
   }
 }

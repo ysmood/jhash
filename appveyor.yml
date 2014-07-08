@@ -9,7 +9,6 @@ environment:
 install:
   - npm update -g npm
   - npm install
-  - npm install -g coffee-script mocha
 
 test_script:
   - node --version
