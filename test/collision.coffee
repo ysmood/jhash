@@ -1,43 +1,54 @@
 #!node_modules/.bin/coffee
 
 _ = require 'underscore'
+crypto = require 'crypto'
 jhash = require '../src/jhash'
 
-test = (hash_fun) ->
-	arr = []
-	for i in [0 ... _.random(1, 10000)]
-		# It's hard to collision, so I decreaed the random byte value
-		# from `2 ** 8` to `2 ** 3`
-		arr.push _.random(0, 2 ** 8)
+collision_test = ->
+	console.log '\n=== Collision Test ==='
 
-	hash_fun.call jhash, arr
+	hash = (mod, hash_fun) ->
+		arr = []
+		for i in [0 ... 500]
+			arr[i] = _.random(0, 2 ** 8 - 1)
 
-batch = (hash_fun, name) ->
-	start_time = Date.now()
-	count = 0
-	res = {}
-	samples = []
-	while true
-		v = test(hash_fun)
-		samples.push v
-		res[v] = true
+		buf = new Buffer(arr)
 
-		# Run about 10 seconds.
-		if ++count % 100 == 0 and
-		Date.now() - start_time >= 1000 * 10
-			break
+		md5_sum = crypto
+			.createHash('md5')
+			.update(buf)
+			.digest('base64')
 
-	sample = JSON.stringify(
-		samples[0...10].map (el) ->
-			el.toString(36)
-	)
-	time = (Date.now() - start_time) / 1000
-	ratio = (1 - _.size(res) / count) * 100
+		[
+			hash_fun.call mod, arr, true
+			md5_sum
+		]
 
-	console.log """
-		first 10 results: #{sample}
-		            time: #{time}s
-		      collisions: #{ratio}% (#{count - _.size(res)}/#{count})
-	"""
+	batch = (mod, hash_fun, name) ->
+		start_time = Date.now()
+		count = 0
+		collision = 0
+		res = {}
+		while true
+			v = hash(mod, hash_fun)
+			if res[v[0]] and res[v[0]] != v[1]
+				collision++
+			else
+				res[v[0]] = v[1]
 
-batch jhash.hash, 'hash_buffer'
+			# Run about 10 seconds.
+			if ++count % 100 == 0 and
+			Date.now() - start_time >= 1000 * 10
+				break
+
+		time = (Date.now() - start_time) / 1000
+
+		console.log """
+			***** #{name} *****
+			time: #{time}s
+			collisions: #{collision / count * 100}% (#{collision} / #{count})
+		"""
+
+	batch jhash, jhash.hash, 'jhash'
+
+collision_test()
