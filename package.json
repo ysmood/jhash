@@ -1,6 +1,6 @@
 {
   "name": "jhash",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
   "main": "dist/jhash.js",
   "scripts": {

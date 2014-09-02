@@ -105,7 +105,7 @@
     module.exports = new Jhash;
   } else {
     if (typeof define === "function" && define.amd) {
-      define('jhash', [], function() {
+      define(function() {
         return new Jhash;
       });
     } else {
