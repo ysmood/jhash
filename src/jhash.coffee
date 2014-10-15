@@ -79,7 +79,7 @@ class Jhash
 		return str
 
 # AMD Support
-if typeof module == "object" and module and typeof module.exports == "object"
+if typeof module == "object" and typeof module.exports == "object"
 	global.Jhash = Jhash
 	module.exports = new Jhash
 else
