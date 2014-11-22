@@ -1,8 +1,8 @@
 jhash = require '../src/jhash'
 fs = require 'fs'
 
-jhash.set_symbols '0123456789abcdefghijklmnopqrstuvwxyz'
+jhash.setSymbols '0123456789abcdefghijklmnopqrstuvwxyz'
 
-data = fs.readFileSync('test/rand_file.bin')
+data = fs.readFileSync('test/randFile.bin')
 
 console.log jhash.hash(data)

@@ -1,60 +1,60 @@
 class Jhash
 	constructor: ->
 		# RFC 3986 URI chars without some unsafe chars "$&+,/:;=?@#~[]".
-		@set_symbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
+		@setSymbols "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*"
 
-		@set_mask_len 32
+		@setMaskLen 32
 
-	set_symbols: (str) =>
+	setSymbols: (str) =>
 		###
 			Control the char set.
 		###
 
 		@symbols = str.split('')
 
-	set_mask_len: (len) =>
+	setMaskLen: (len) =>
 		###
 			If you want shorter hash, this is the api.
 		###
 
 		len = 32 if len > 32
 
-		@init_sum = 2 ** ((len - len % 2) / 2)
+		@initSum = 2 ** ((len - len % 2) / 2)
 
-		@roll_len = len - 1
+		@rollLen = len - 1
 
 		@mask = 0xffffffff >>> (32 - len)
 
-	hash: (data, is_number = false) ->
+	hash: (data, isNumber = false) ->
 		###
 			Auto check the data type and choose the corresponding method.
 		###
 
 		if typeof data == 'string'
-			h = @hash_str data
+			h = @hashStr data
 		else if Buffer.isBuffer(data) or Array.isArray(data)
-			h = @hash_arr data
+			h = @hashArr data
 
 		# Use 'n >>> 0' to prevent the negative number.
 		h = h >>> 0
 
-		if is_number
+		if isNumber
 			h
 		else
-			@to_str h
+			@toStr h
 
-	hash_arr: (arr) ->
+	hashArr: (arr) ->
 		###
 			Also can hash a file buffer.
 		###
 
-		h = @init_sum
+		h = @initSum
 		for i in arr
 			h = @sum h, i
 		h
 
-	hash_str: (str) ->
-		h = @init_sum
+	hashStr: (str) ->
+		h = @initSum
 		i = 0
 		len = str.length
 		while i < len
@@ -63,9 +63,9 @@ class Jhash
 
 	sum: (h, v) ->
 		# One bit cycling the hash value.
-		( (h << 1 | h >>> @roll_len) & @mask ) ^ v
+		( (h << 1 | h >>> @rollLen) & @mask ) ^ v
 
-	to_str: (num) ->
+	toStr: (num) ->
 		str = ''
 		base = @symbols.length
 

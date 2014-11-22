@@ -50,11 +50,11 @@ Only the coffeescript one has full API.
  jhash.hash(fs.readFileSync('a.jpg'));
 
  // Control the hash char set.
- jhash.set_symbols('abcdef');
+ jhash.setSymbols('abcdef');
  jhash.hash('test'); // output => 'decfddfe'
 
  // Control the max length of the result hash value. Unit is bit.
- jhash.set_mask_len(10);
+ jhash.setMaskLen(10);
  jhash.hash('test'); // output => 'ede'
  ```
 

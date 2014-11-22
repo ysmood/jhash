@@ -1,19 +1,19 @@
 _ = require 'underscore'
 
-hash_funs =
-	xor_hash: (arr) ->
+hashFuns =
+	xorHash: (arr) ->
 		h = 0
 		for i in arr
 			h ^= i
 		h
 
-	rotating_hash: (arr) ->
+	rotatingHash: (arr) ->
 		h = 0
 		for i in arr
 			h = (h << 8 | h >>> 24) ^ i
 		h
 
-	bjb_hash: (arr) ->
+	bjbHash: (arr) ->
 		h = 0
 		for i in arr
 			# js supports Infinity large number.
@@ -21,7 +21,7 @@ hash_funs =
 			h = (h * 33 & 0xffffffff) + i
 		h
 
-	bjb2_hash: (arr) ->
+	bjb2Hash: (arr) ->
 		# Typically better than the original one.
 		# The result sum typically shorter then the original one.
 		h = 0
@@ -29,7 +29,7 @@ hash_funs =
 			h = (h * 33 & 0xffffffff) ^ i
 		h
 
-	fnv_hash: (arr) ->
+	fnvHash: (arr) ->
 		###
 			Follows the same lines as Bernstein's modified hash with carefully chosen constants.
 		###
@@ -39,7 +39,7 @@ hash_funs =
 			h = ( h * 16777619 & 0xffffffff) ^ i
 		h
 
-	oat_hash: (arr) ->
+	oatHash: (arr) ->
 		h = 0
 		for i in arr
 			h += i
@@ -52,7 +52,7 @@ hash_funs =
 
 		h
 
-	jsw_hash: (arr) ->
+	jswHash: (arr) ->
 		###
 			One bit cycle
 		###
@@ -69,22 +69,22 @@ hash_funs =
 			h = ( (h << 1 | h >>> 30) & 0x7fffffff ) ^ i
 		h
 
-test = (hash_fun) ->
+test = (hashFun) ->
 	arr = []
 	for i in [0 ... _.random(200, 5000)]
 		# It's hard to collision, so I decreaed the random byte value
 		# from `2 ** 8` to `2 ** 3`
 		arr.push _.random(0, 2 ** 3)
 
-	hash_fun(arr)
+	hashFun(arr)
 
-batch = (hash_fun, name) ->
+batch = (hashFun, name) ->
 	len = 100000
 	time = _.now()
 	res = {}
 	samples = []
 	for i in [0 ... len]
-		v = test(hash_fun)
+		v = test(hashFun)
 		samples.push v
 		res[v] = true
 
@@ -102,5 +102,5 @@ batch = (hash_fun, name) ->
 		 collisions: #{_.size(res)} / #{len}
 	"""
 
-for k, v of hash_funs
+for k, v of hashFuns
 	batch(v, k)

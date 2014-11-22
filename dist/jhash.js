@@ -5,13 +5,13 @@
 
   Jhash = (function() {
     function Jhash() {
-      this.set_mask_len = __bind(this.set_mask_len, this);
-      this.set_symbols = __bind(this.set_symbols, this);
-      this.set_symbols("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*");
-      this.set_mask_len(32);
+      this.setMaskLen = __bind(this.setMaskLen, this);
+      this.setSymbols = __bind(this.setSymbols, this);
+      this.setSymbols("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._!'()*");
+      this.setMaskLen(32);
     }
 
-    Jhash.prototype.set_symbols = function(str) {
+    Jhash.prototype.setSymbols = function(str) {
 
       /*
       			Control the char set.
@@ -19,7 +19,7 @@
       return this.symbols = str.split('');
     };
 
-    Jhash.prototype.set_mask_len = function(len) {
+    Jhash.prototype.setMaskLen = function(len) {
 
       /*
       			If you want shorter hash, this is the api.
@@ -27,40 +27,40 @@
       if (len > 32) {
         len = 32;
       }
-      this.init_sum = Math.pow(2, (len - len % 2) / 2);
-      this.roll_len = len - 1;
+      this.initSum = Math.pow(2, (len - len % 2) / 2);
+      this.rollLen = len - 1;
       return this.mask = 0xffffffff >>> (32 - len);
     };
 
-    Jhash.prototype.hash = function(data, is_number) {
+    Jhash.prototype.hash = function(data, isNumber) {
       var h;
-      if (is_number == null) {
-        is_number = false;
+      if (isNumber == null) {
+        isNumber = false;
       }
 
       /*
       			Auto check the data type and choose the corresponding method.
        */
       if (typeof data === 'string') {
-        h = this.hash_str(data);
+        h = this.hashStr(data);
       } else if (Buffer.isBuffer(data) || Array.isArray(data)) {
-        h = this.hash_arr(data);
+        h = this.hashArr(data);
       }
       h = h >>> 0;
-      if (is_number) {
+      if (isNumber) {
         return h;
       } else {
-        return this.to_str(h);
+        return this.toStr(h);
       }
     };
 
-    Jhash.prototype.hash_arr = function(arr) {
+    Jhash.prototype.hashArr = function(arr) {
 
       /*
       			Also can hash a file buffer.
        */
       var h, i, _i, _len;
-      h = this.init_sum;
+      h = this.initSum;
       for (_i = 0, _len = arr.length; _i < _len; _i++) {
         i = arr[_i];
         h = this.sum(h, i);
@@ -68,9 +68,9 @@
       return h;
     };
 
-    Jhash.prototype.hash_str = function(str) {
+    Jhash.prototype.hashStr = function(str) {
       var h, i, len;
-      h = this.init_sum;
+      h = this.initSum;
       i = 0;
       len = str.length;
       while (i < len) {
@@ -80,10 +80,10 @@
     };
 
     Jhash.prototype.sum = function(h, v) {
-      return ((h << 1 | h >>> this.roll_len) & this.mask) ^ v;
+      return ((h << 1 | h >>> this.rollLen) & this.mask) ^ v;
     };
 
-    Jhash.prototype.to_str = function(num) {
+    Jhash.prototype.toStr = function(num) {
       var base, s, str;
       str = '';
       base = this.symbols.length;
@@ -100,7 +100,7 @@
 
   })();
 
-  if (typeof module === "object" && module && typeof module.exports === "object") {
+  if (typeof module === "object" && typeof module.exports === "object") {
     global.Jhash = Jhash;
     module.exports = new Jhash;
   } else {

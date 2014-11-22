@@ -1,36 +1,36 @@
-#!node_modules/.bin/coffee
+#!nodeModules/.bin/coffee
 
 _ = require 'underscore'
 crypto = require 'crypto'
 jhash = require '../src/jhash'
 
-collision_test = ->
+collisionTest = ->
 	console.log '\n=== Collision Test ==='
 
-	hash = (mod, hash_fun) ->
+	hash = (mod, hashFun) ->
 		arr = []
 		for i in [0 ... 500]
 			arr[i] = _.random(0, 2 ** 8 - 1)
 
 		buf = new Buffer(arr)
 
-		md5_sum = crypto
+		md5Sum = crypto
 			.createHash('md5')
 			.update(buf)
 			.digest('base64')
 
 		[
-			hash_fun.call mod, arr, true
-			md5_sum
+			hashFun.call mod, arr, true
+			md5Sum
 		]
 
-	batch = (mod, hash_fun, name) ->
-		start_time = Date.now()
+	batch = (mod, hashFun, name) ->
+		startTime = Date.now()
 		count = 0
 		collision = 0
 		res = {}
 		while true
-			v = hash(mod, hash_fun)
+			v = hash(mod, hashFun)
 			if res[v[0]] and res[v[0]] != v[1]
 				collision++
 			else
@@ -38,10 +38,10 @@ collision_test = ->
 
 			# Run about 10 seconds.
 			if ++count % 100 == 0 and
-			Date.now() - start_time >= 1000 * 10
+			Date.now() - startTime >= 1000 * 10
 				break
 
-		time = (Date.now() - start_time) / 1000
+		time = (Date.now() - startTime) / 1000
 
 		console.log """
 			***** #{name} *****
@@ -51,4 +51,4 @@ collision_test = ->
 
 	batch jhash, jhash.hash, 'jhash'
 
-collision_test()
+collisionTest()

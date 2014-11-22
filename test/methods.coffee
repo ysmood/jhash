@@ -1,17 +1,17 @@
 assert = require 'assert'
 jhash = require '../src/jhash'
 
-hash_str = ->
-	jhash.hash_str 'asd0802kjksdf023hkdfhv'
+hashStr = ->
+	jhash.hashStr 'asd0802kjksdf023hkdfhv'
 
-assert.equal(hash_str(), '7L0XQ')
+assert.equal(hashStr(), '7L0XQ')
 
-jhash.set_symbols 'abcdefg'
+jhash.setSymbols 'abcdefg'
 
-assert.equal(hash_str(), 'edgeedabcd')
+assert.equal(hashStr(), 'edgeedabcd')
 
-jhash.set_mask_len 10
+jhash.setMaskLen 10
 
-assert.equal(hash_str(), 'cbf')
+assert.equal(hashStr(), 'cbf')
 
 console.log '>> All passed.'
