@@ -42,21 +42,24 @@ Only the coffeescript one has full API.
 
 * Usage
 
- ```javascript
- var jhash = require('jhash');
- jhash.hash('test'); // output => '349o'
+```javascript
+var jhash = require('jhash');
+jhash.hash('test'); // output => '349o'
 
- var fs = require('fs');
- jhash.hash(fs.readFileSync('a.jpg'));
+var fs = require('fs');
+jhash.hash(fs.readFileSync('a.jpg'));
 
- // Control the hash char set.
- jhash.setSymbols('abcdef');
- jhash.hash('test'); // output => 'decfddfe'
+// Control the hash char set.
+jhash.setSymbols('abcdef');
+jhash.hash('test'); // output => 'decfddfe'
 
- // Control the max length of the result hash value. Unit is bit.
- jhash.setMaskLen(10);
- jhash.hash('test'); // output => 'ede'
- ```
+// Control the max length of the result hash value. Unit is bit.
+jhash.setMaskLen(10);
+jhash.hash('test'); // output => 'ede'
+
+// New jhash instance.
+myJhash = new jhash.constructor
+```
 
 ### Browser
 
