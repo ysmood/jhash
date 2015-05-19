@@ -1,6 +1,6 @@
 {
   "name": "jhash",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
   "main": "dist/jhash.js",
   "scripts": {
@@ -24,10 +24,10 @@
   },
   "homepage": "https://github.com/ysmood/jhash",
   "devDependencies": {
-    "coffee-script": "^1.7.1",
-    "fs-extra": "^0.9.1",
-    "mocha": "^1.20.1",
-    "underscore": "^1.6.0",
-    "win-spawn": "^2.0.0"
+    "coffee-script": "1.9.2",
+    "fs-extra": "0.18.3",
+    "mocha": "2.2.5",
+    "underscore": "1.8.3",
+    "win-spawn": "2.0.0"
   }
 }

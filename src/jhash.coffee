@@ -5,14 +5,14 @@ class Jhash
 
 		@setMaskLen 32
 
-	setSymbols: (str) =>
+	setSymbols: (str) ->
 		###
 			Control the char set.
 		###
 
 		@symbols = str.split('')
 
-	setMaskLen: (len) =>
+	setMaskLen: (len) ->
 		###
 			If you want shorter hash, this is the api.
 		###
@@ -78,12 +78,12 @@ class Jhash
 
 		return str
 
-# AMD Support
-if typeof module == "object" and typeof module.exports == "object"
-	global.Jhash = Jhash
-	module.exports = new Jhash
-else
-	if typeof define == "function" and define.amd
-		define -> new Jhash
-	else
-		window.jhash = new Jhash
+# CMD & AMD Support
+jhash = new Jhash
+try
+	module.exports = jhash
+catch
+	try
+		define -> jhash
+	catch
+		window.jhash = jhash
