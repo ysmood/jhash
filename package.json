@@ -4,8 +4,9 @@
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
   "main": "dist/jhash.js",
   "scripts": {
-    "test": "cake test",
-    "prepublish": "cake build"
+    "no": "no",
+    "test": "no test",
+    "prepublish": "no build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "coffee-script": "1.9.2",
     "fs-extra": "0.18.3",
     "mocha": "2.2.5",
+    "nokit": "^0.9.2",
     "underscore": "1.8.3",
     "win-spawn": "2.0.0"
   }

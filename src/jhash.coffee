@@ -78,12 +78,12 @@ class Jhash
 
 		return str
 
-# CMD & AMD Support
-jhash = new Jhash
-try
-	module.exports = jhash
-catch
+	# CMD & AMD Support
+	jhash = new Jhash
 	try
-		define -> jhash
+		module.exports = jhash
 	catch
-		window.jhash = jhash
+		try
+			define -> jhash
+		catch
+			window.jhash = jhash
