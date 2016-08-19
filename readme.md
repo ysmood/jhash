@@ -29,7 +29,8 @@ I have implemented the core algorithm into 7 commonly used languages:
 * python
 * ruby
 
-Only the coffeescript one has full API.
+Only the coffeescript one has full API. If you only want the minimal function, go for the `src/jhash.core.js` file,
+Or `require('jhash/lib/jhash.core.js')`
 
 
 ### Node

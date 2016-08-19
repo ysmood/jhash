@@ -1,8 +1,0 @@
-src
-test
-rand_files
-bower_components
-bower.json
-.*
-Cakefile
-*.coffee

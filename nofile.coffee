@@ -15,11 +15,11 @@ module.exports = (task) ->
 		]
 	task 'build', 'Build project', ->
 		kit.spawn 'coffee', [
-			'-o', 'dist'
+			'-o', 'lib'
 			'-c', 'src/jhash.coffee'
 		]
 		.then ->
-			kit.copy 'src/**/*.js', 'dist'
+			kit.copy 'src/**/*.js', 'lib'
 
 	task 'benchmark', 'Simple benchmark', ->
 		jhash = require './src/jhash'

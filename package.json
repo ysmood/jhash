@@ -1,13 +1,16 @@
 {
   "name": "jhash",
-  "version": "0.1.7",
+  "version": "0.1.10",
   "description": "A fast algorithm to hash string or binary file inspired by the JSW hash.",
-  "main": "dist/jhash.js",
+  "main": "lib/jhash.js",
   "scripts": {
     "no": "no",
     "test": "no test",
     "prepublish": "no build"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ysmood/jhash.git"
