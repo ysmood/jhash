@@ -1,6 +1,6 @@
 #!nodeModules/.bin/coffee
 
-_ = require 'underscore'
+{_} = require 'nokit'
 crypto = require 'crypto'
 jhash = require '../src/jhash'
 

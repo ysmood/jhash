@@ -1,4 +1,4 @@
-_ = require 'underscore'
+{_} = require 'nokit'
 
 hashFuns =
 	xorHash: (arr) ->

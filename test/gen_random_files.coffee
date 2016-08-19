@@ -1,12 +1,12 @@
-fs = require 'fs-extra'
-_ = require 'underscore'
+kit = require 'nokit'
+_ = kit._
 
 dirPath = 'randFiles'
 
 try
-	fs.removeSync dirPath
+	kit.removeSync dirPath
 
-fs.mkdirSync dirPath
+kit.mkdirSync dirPath
 
 _.times 5, (num) ->
 	len = _.random(1, 10000)
@@ -14,4 +14,4 @@ _.times 5, (num) ->
 	for i in [0 ... len]
 		buf[i] = _.random(0, 2 ** 8)
 
-	fs.outputFileSync dirPath + "/#{num}.bin", buf
+	kit.outputFileSync dirPath + "/#{num}.bin", buf

@@ -1,14 +1,13 @@
+# nofile-pre-require: coffee-script/register
 kit = require 'nokit'
 
 module.exports = (task) ->
 
 	task 'test', 'Test APIs', ->
-		kit.spawn('mocha', [
-			'--require', 'coffee-script/register'
-			'-R', 'spec'
+		kit.spawn('junit', [
+			'-r', 'coffee-script/register'
 			'test/basic.coffee'
-		]).then ({ code }) ->
-			process.exit code
+		])
 
 	task 'collision', '10 seconds collision test', ->
 		kit.spawn 'coffee', [
@@ -19,6 +18,8 @@ module.exports = (task) ->
 			'-o', 'dist'
 			'-c', 'src/jhash.coffee'
 		]
+		.then ->
+			kit.copy 'src/**/*.js', 'dist'
 
 	task 'benchmark', 'Simple benchmark', ->
 		jhash = require './src/jhash'
