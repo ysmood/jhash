@@ -100,17 +100,9 @@ Or download the js file from the release page: [Release][1].
 
         jhash a.jpg
 
-## Test
-
-#### Unit test
-
-You must have installed [coffeescript](https://github.com/ysmood/jdb/blob/master/coffeescript.org) and [mocha](http://visionmedia.github.io/mocha/) globally.
-
-    cake test
-
 #### Collision test for 10 seconds random data
 
-    cake collision
+    npm run no -- collision
 
 #### Compare to some other hash algorithms
 
@@ -151,7 +143,7 @@ This is just a random test, you may need to test some real data before using it 
 
 ## Benchmark
 
-Run `cake benchmark`.
+Run `npm run no -- benchmark`.
 
 Intel Core i7 2.3GHz SSD
 
