@@ -104,7 +104,7 @@ Or download the js file from the release page: [Release][1].
 
 #### Unit test
 
-You must have installed [coffeescript](https://github.com/ysmood/jdb/blob/master/coffeescript.org) and [mocha](http://visionmedia.github.io/mocha/) globally.
+You must have installed [coffeescript](https://github.com/ysmood/jdb/blob/master/coffeescript.org) and [mocha](http://mochajs.org/) globally.
 
     cake test
 
